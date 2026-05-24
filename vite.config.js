@@ -3,5 +3,6 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/nhai-toll-plaza-management-system/",
   plugins: [react(), tailwindcss()],
 });
