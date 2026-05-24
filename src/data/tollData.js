@@ -1,0 +1,72 @@
+export const states = [
+  "Karnataka",
+  "Tamil Nadu",
+  "Andhra Pradesh",
+  "Telangana",
+  "Maharashtra",
+  "Kerala",
+  "Gujarat",
+  "Rajasthan",
+  "Delhi",
+  "Haryana",
+  "Punjab",
+  "Uttar Pradesh",
+  "Madhya Pradesh",
+  "West Bengal",
+  "Odisha",
+  "Bihar",
+];
+
+export const tollRates = {
+  Car: 90,
+  Jeep: 140,
+  Van: 140,
+  Bus: 300,
+  Truck: 450,
+  "Heavy Vehicle": 650,
+};
+
+export const vehicleTypes = Object.keys(tollRates);
+
+export const tollPlazas = [
+  { id: "ka-bengaluru-nh44", name: "Bengaluru Toll Plaza", city: "Bengaluru", state: "Karnataka", highway: "NH 44", lanes: 12 },
+  { id: "ka-nelamangala-nh48", name: "Nelamangala Toll Plaza", city: "Bengaluru Rural", state: "Karnataka", highway: "NH 48", lanes: 8 },
+  { id: "tn-hosur-nh44", name: "Hosur Toll Plaza", city: "Hosur", state: "Tamil Nadu", highway: "NH 44", lanes: 10 },
+  { id: "tn-chengalpattu-nh32", name: "Chengalpattu Toll Plaza", city: "Chennai", state: "Tamil Nadu", highway: "NH 32", lanes: 8 },
+  { id: "ap-vijayawada-nh16", name: "Vijayawada Toll Plaza", city: "Vijayawada", state: "Andhra Pradesh", highway: "NH 16", lanes: 10 },
+  { id: "ap-visakhapatnam-nh16", name: "Vizag Highway Toll", city: "Visakhapatnam", state: "Andhra Pradesh", highway: "NH 16", lanes: 8 },
+  { id: "ts-hyderabad-orr", name: "Hyderabad ORR Toll Plaza", city: "Hyderabad", state: "Telangana", highway: "ORR", lanes: 14 },
+  { id: "ts-warangal-nh163", name: "Warangal Toll Plaza", city: "Warangal", state: "Telangana", highway: "NH 163", lanes: 6 },
+  { id: "mh-mumbai-pune", name: "Mumbai Pune Expressway Toll", city: "Lonavala", state: "Maharashtra", highway: "Expressway", lanes: 16 },
+  { id: "mh-nashik-nh160", name: "Nashik Toll Plaza", city: "Nashik", state: "Maharashtra", highway: "NH 160", lanes: 8 },
+  { id: "kl-palakkad-nh544", name: "Palakkad Toll Plaza", city: "Palakkad", state: "Kerala", highway: "NH 544", lanes: 6 },
+  { id: "kl-kochi-nh66", name: "Kochi Highway Toll", city: "Kochi", state: "Kerala", highway: "NH 66", lanes: 8 },
+  { id: "gj-ahmedabad-nh48", name: "Ahmedabad Toll Plaza", city: "Ahmedabad", state: "Gujarat", highway: "NH 48", lanes: 10 },
+  { id: "gj-vadodara-ne1", name: "Vadodara Express Toll", city: "Vadodara", state: "Gujarat", highway: "NE 1", lanes: 10 },
+  { id: "rj-jaipur-nh48", name: "Jaipur Toll Plaza", city: "Jaipur", state: "Rajasthan", highway: "NH 48", lanes: 10 },
+  { id: "rj-udaipur-nh27", name: "Udaipur Toll Plaza", city: "Udaipur", state: "Rajasthan", highway: "NH 27", lanes: 8 },
+  { id: "dl-delhi-nh44", name: "Delhi Entry Toll", city: "Delhi", state: "Delhi", highway: "NH 44", lanes: 12 },
+  { id: "hr-delhi-gurgaon", name: "Delhi Gurgaon Toll", city: "Gurugram", state: "Haryana", highway: "NH 48", lanes: 16 },
+  { id: "hr-panipat-nh44", name: "Panipat Toll Plaza", city: "Panipat", state: "Haryana", highway: "NH 44", lanes: 8 },
+  { id: "pb-ludhiana-nh44", name: "Ludhiana Toll Plaza", city: "Ludhiana", state: "Punjab", highway: "NH 44", lanes: 8 },
+  { id: "pb-amritsar-nh3", name: "Amritsar Toll Plaza", city: "Amritsar", state: "Punjab", highway: "NH 3", lanes: 6 },
+  { id: "up-lucknow-nh27", name: "Lucknow Toll Plaza", city: "Lucknow", state: "Uttar Pradesh", highway: "NH 27", lanes: 10 },
+  { id: "up-agra-yamuna", name: "Agra Expressway Toll", city: "Agra", state: "Uttar Pradesh", highway: "Yamuna Expressway", lanes: 12 },
+  { id: "mp-indore-nh52", name: "Indore Toll Plaza", city: "Indore", state: "Madhya Pradesh", highway: "NH 52", lanes: 8 },
+  { id: "mp-bhopal-nh46", name: "Bhopal Toll Plaza", city: "Bhopal", state: "Madhya Pradesh", highway: "NH 46", lanes: 8 },
+  { id: "wb-kolkata-nh16", name: "Kolkata Highway Toll", city: "Kolkata", state: "West Bengal", highway: "NH 16", lanes: 10 },
+  { id: "wb-durgapur-nh19", name: "Durgapur Toll Plaza", city: "Durgapur", state: "West Bengal", highway: "NH 19", lanes: 8 },
+  { id: "od-bhubaneswar-nh16", name: "Bhubaneswar Toll Plaza", city: "Bhubaneswar", state: "Odisha", highway: "NH 16", lanes: 8 },
+  { id: "od-cuttack-nh55", name: "Cuttack Toll Plaza", city: "Cuttack", state: "Odisha", highway: "NH 55", lanes: 6 },
+  { id: "br-patna-nh31", name: "Patna Toll Plaza", city: "Patna", state: "Bihar", highway: "NH 31", lanes: 8 },
+  { id: "br-gaya-nh22", name: "Gaya Toll Plaza", city: "Gaya", state: "Bihar", highway: "NH 22", lanes: 6 },
+];
+
+export const vehicleImages = {
+  Car: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=500&q=80",
+  Jeep: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=500&q=80",
+  Van: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=500&q=80",
+  Bus: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=500&q=80",
+  Truck: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80",
+  "Heavy Vehicle": "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=500&q=80",
+};
