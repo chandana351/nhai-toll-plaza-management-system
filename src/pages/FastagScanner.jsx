@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { tollPlazas, vehicleImages } from "../data/tollData.js";
+import RealisticVehicleVisual from "../components/RealisticVehicleVisual.jsx";
+import { tollPlazas } from "../data/tollData.js";
 import { captureRandomVehicle } from "../utils/randomVehicle.js";
 import { buildTransaction, formatCurrency, formatDateTime, saveTransaction } from "../utils/storage.js";
 
@@ -47,7 +48,7 @@ export default function FastagScanner() {
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_0.85fr]">
         <div className="rounded border border-slate-200 bg-white p-6 shadow-sm">
           <div className="mb-5 overflow-hidden rounded border border-slate-200 bg-slate-100">
-            <img src={vehicleImages[capturedVehicle.vehicleType]} alt={`${capturedVehicle.vehicleType} captured at toll lane`} className="h-56 w-full object-cover" />
+            <RealisticVehicleVisual type={capturedVehicle.vehicleType} plateNumber={capturedVehicle.vehicleNumber} />
             <div className="grid gap-3 bg-white p-4 sm:grid-cols-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-wide text-slate-500">Camera Plate</p>

@@ -61,12 +61,3 @@ export const tollPlazas = [
   { id: "br-patna-nh31", name: "Patna Toll Plaza", city: "Patna", state: "Bihar", highway: "NH 31", lanes: 8 },
   { id: "br-gaya-nh22", name: "Gaya Toll Plaza", city: "Gaya", state: "Bihar", highway: "NH 22", lanes: 6 },
 ];
-
-export const vehicleImages = {
-  Car: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=500&q=80",
-  Jeep: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=500&q=80",
-  Van: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=500&q=80",
-  Bus: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=500&q=80",
-  Truck: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=500&q=80",
-  "Heavy Vehicle": "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=500&q=80",
-};
