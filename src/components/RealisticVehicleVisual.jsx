@@ -37,8 +37,25 @@ const vehicleProfiles = {
   },
 };
 
-export default function RealisticVehicleVisual({ type, plateNumber = "KA01AB1234", compact = false }) {
+export default function RealisticVehicleVisual({ type, plateNumber = "KA01AB1234", compact = false, imageSrc }) {
   const profile = vehicleProfiles[type] || vehicleProfiles.Car;
+
+  if (imageSrc) {
+    return (
+      <div className={`relative overflow-hidden rounded bg-slate-950 ${compact ? "h-32" : "h-64"}`}>
+        <img src={imageSrc} alt={`${type} toll camera capture`} className="h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/45" />
+        <div className="absolute left-4 top-4 rounded bg-black/65 px-3 py-1 text-xs font-black uppercase tracking-widest text-emerald-300">ANPR Cam</div>
+        <div className="absolute right-4 top-4 rounded bg-black/65 px-3 py-1 text-xs font-black uppercase tracking-widest text-white">Live Capture</div>
+        <div className={`absolute left-1/2 ${compact ? "bottom-3 scale-75" : "bottom-6"} h-11 w-48 -translate-x-1/2 rounded border-2 border-zinc-900 bg-white shadow-2xl`}>
+          <div className="absolute left-2 top-1 grid h-9 w-9 place-items-center rounded-sm bg-blue-700 text-[8px] font-black leading-none text-white">
+            <span>IND</span>
+          </div>
+          <div className="pl-12 pt-1 text-center text-xl font-black tracking-widest text-zinc-950">{plateNumber}</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`relative grid place-items-center overflow-hidden rounded bg-gradient-to-b from-slate-300 via-slate-600 to-slate-950 ${compact ? "h-32" : "h-64"}`}>
