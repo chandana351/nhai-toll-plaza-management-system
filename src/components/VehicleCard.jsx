@@ -1,12 +1,12 @@
 import { formatCurrency } from "../utils/storage.js";
 
 const vehicleMeta = {
-  Car: { className: "LMV", axles: "2 Axle", image: "/vehicle-types/car.jpg" },
-  Jeep: { className: "LMV Utility", axles: "2 Axle", image: "/vehicle-types/jeep.jpg" },
-  Van: { className: "Passenger Van", axles: "2 Axle", image: "/vehicle-types/van.jpg" },
-  Bus: { className: "Passenger Bus", axles: "2-3 Axle", image: "/vehicle-types/bus.jpg" },
-  Truck: { className: "Goods Carrier", axles: "3-4 Axle", image: "/vehicle-types/truck.jpg" },
-  "Heavy Vehicle": { className: "Multi Axle", axles: "5+ Axle", image: "/vehicle-types/heavy-vehicle.jpg" },
+  Car: { className: "Sedan / SUV", axles: "2 Axle", image: "/vehicle-types/car.jpg" },
+  Jeep: { className: "SUV", axles: "2 Axle", image: "/vehicle-types/jeep.jpg" },
+  Van: { className: "Tempo Traveller / Van", axles: "2 Axle", image: "/vehicle-types/van.jpg" },
+  Bus: { className: "KSRTC / Volvo-style Bus", axles: "2-3 Axle", image: "/vehicle-types/bus.jpg" },
+  Truck: { className: "Cargo Truck", axles: "3-4 Axle", image: "/vehicle-types/truck.jpg" },
+  "Heavy Vehicle": { className: "Multi-axle Container Truck", axles: "5+ Axle", image: "/vehicle-types/heavy-vehicle.jpg" },
 };
 
 export default function VehicleCard({ type, rate, selected, onSelect }) {
