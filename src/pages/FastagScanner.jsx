@@ -18,7 +18,7 @@ export default function FastagScanner() {
     amount: Number(params.get("amount") || 0),
     confidence: "Manual entry",
     capturedAt: new Date().toISOString(),
-    imageSrc: getRandomCaptureImage(),
+    imageSrc: getRandomCaptureImage(params.get("vehicleType")),
   });
 
   function simulateCameraCapture() {
