@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import VehicleCard from "../components/VehicleCard.jsx";
 import { tollPlazas, tollRates, vehicleTypes } from "../data/tollData.js";
+import { formatCurrency } from "../utils/storage.js";
 
 const vehiclePattern = /^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/;
 
@@ -14,11 +15,20 @@ export default function CollectToll() {
   const [vehicleType, setVehicleType] = useState("Car");
   const [laneNumber, setLaneNumber] = useState("Lane 1");
   const [paymentMode, setPaymentMode] = useState("FASTag");
+  const [passId, setPassId] = useState("123456");
+  const [description, setDescription] = useState("");
+  const [fareType, setFareType] = useState("Single");
+  const [penalty, setPenalty] = useState("0");
+  const [overloaded, setOverloaded] = useState(false);
   const [error, setError] = useState("");
 
   const plaza = useMemo(() => tollPlazas.find((item) => item.id === plazaId) || tollPlazas[0], [plazaId]);
   const lanes = Array.from({ length: plaza.lanes }, (_, index) => `Lane ${index + 1}`);
-  const amount = tollRates[vehicleType];
+  const baseAmount = tollRates[vehicleType];
+  const fareMultiplier = fareType === "Double" ? 2 : 1;
+  const penaltyAmount = Number(penalty || 0);
+  const overloadPenalty = overloaded ? 500 : 0;
+  const amount = baseAmount * fareMultiplier + penaltyAmount + overloadPenalty;
 
   function continuePayment(event) {
     event.preventDefault();
@@ -49,8 +59,25 @@ export default function CollectToll() {
               </select>
             </label>
             <label className="grid gap-2 font-bold text-slate-700">
-              Vehicle Number
+              Registration Number
               <input value={vehicleNumber} onChange={(event) => setVehicleNumber(event.target.value.toUpperCase())} className="rounded border border-slate-300 px-4 py-3 font-black tracking-wider" placeholder="KA01AB1234" />
+            </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 font-bold text-slate-700">
+                Pass ID
+                <input value={passId} onChange={(event) => setPassId(event.target.value)} className="rounded border border-slate-300 px-4 py-3 font-semibold" placeholder="123456" />
+              </label>
+              <label className="grid gap-2 font-bold text-slate-700">
+                Fare Type
+                <select value={fareType} onChange={(event) => setFareType(event.target.value)} className="rounded border border-slate-300 px-4 py-3 font-semibold">
+                  <option>Single</option>
+                  <option>Double</option>
+                </select>
+              </label>
+            </div>
+            <label className="grid gap-2 font-bold text-slate-700">
+              Description
+              <input value={description} onChange={(event) => setDescription(event.target.value)} className="rounded border border-slate-300 px-4 py-3 font-semibold" placeholder="Operator note or vehicle remark" />
             </label>
             <label className="grid gap-2 font-bold text-slate-700">
               Lane Number
@@ -58,6 +85,16 @@ export default function CollectToll() {
                 {lanes.map((lane) => <option key={lane}>{lane}</option>)}
               </select>
             </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 font-bold text-slate-700">
+                Penalty
+                <input value={penalty} onChange={(event) => setPenalty(event.target.value)} type="number" min="0" className="rounded border border-slate-300 px-4 py-3 font-semibold" />
+              </label>
+              <label className="flex items-center gap-3 rounded border border-slate-300 px-4 py-3 font-bold text-slate-700">
+                <input checked={overloaded} onChange={(event) => setOverloaded(event.target.checked)} type="checkbox" className="h-5 w-5 accent-amber-500" />
+                Is vehicle overloaded?
+              </label>
+            </div>
             <div>
               <p className="font-bold text-slate-700">Payment Mode</p>
               <div className="mt-2 grid grid-cols-3 gap-2">
@@ -66,6 +103,14 @@ export default function CollectToll() {
                     {mode}
                   </button>
                 ))}
+              </div>
+            </div>
+            <div className="rounded border border-slate-200 bg-slate-50 p-4">
+              <div className="grid gap-3 text-sm sm:grid-cols-2">
+                <p className="font-bold text-slate-500">TC Class: <span className="font-black text-slate-950">{vehicleType}</span></p>
+                <p className="font-bold text-slate-500">Mode of Payment: <span className="font-black text-slate-950">{paymentMode}</span></p>
+                <p className="font-bold text-slate-500">TC Amount: <span className="font-black text-slate-950">{formatCurrency(baseAmount * fareMultiplier)}</span></p>
+                <p className="font-bold text-slate-500">Total Amount: <span className="font-black text-emerald-700">{formatCurrency(amount)}</span></p>
               </div>
             </div>
             {error && <p className="rounded bg-red-50 p-3 text-sm font-bold text-red-700">{error}</p>}
@@ -78,7 +123,7 @@ export default function CollectToll() {
                 <h2 className="text-xl font-black text-slate-950">Vehicle Type</h2>
                 <p className="text-sm font-semibold text-slate-500">{plaza.name}, {plaza.state} - {plaza.highway}</p>
               </div>
-              <p className="rounded bg-amber-100 px-4 py-2 text-xl font-black text-amber-950">₹{amount}</p>
+              <p className="rounded bg-amber-100 px-4 py-2 text-xl font-black text-amber-950">{formatCurrency(amount)}</p>
             </div>
             <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {vehicleTypes.map((type) => <VehicleCard key={type} type={type} rate={tollRates[type]} selected={vehicleType === type} onSelect={setVehicleType} />)}
